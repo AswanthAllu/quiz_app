@@ -13,7 +13,10 @@ let timer = 1200; // 20 minutes
 function loadQuestion() {
     let q = questions[currentQuestionIndex];
     document.getElementById("question-container").innerText = q.question;
-    document.getElementById("options-container").innerHTML = q.options.map(opt => `<label><input type="radio" name="answer" value="${opt}"> ${opt}</label><br>`).join("");
+    document.getElementById("options-container").innerHTML = q.options.map(opt => 
+        `<input type="radio" name="answer" id="${opt}" value="${opt}">
+         <label for="${opt}">${opt}</label>`
+    ).join("");
 }
 
 document.getElementById("next-btn").addEventListener("click", () => {
@@ -24,3 +27,19 @@ document.getElementById("next-btn").addEventListener("click", () => {
 });
 
 loadQuestion();
+
+// ⏳ Timer Functionality
+function startTimer() {
+    let timeElement = document.getElementById("time");
+    let interval = setInterval(() => {
+        let minutes = Math.floor(timer / 60);
+        let seconds = timer % 60;
+        timeElement.innerText = `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+        if (timer-- <= 0) {
+            clearInterval(interval);
+            localStorage.setItem("quizScore", score);
+            window.location.href = "result.html"; 
+        }
+    }, 1000);
+}
+startTimer();

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Roboto:wght@300;500;700&display=swap');
 
 body {
     font-family: 'Poppins', sans-serif;
@@ -47,6 +47,7 @@ body {
 /* 🏆 Headings */
 h1 {
     font-size: 28px;
+    font-family: 'Roboto', sans-serif;
     color: #FFC107;
     text-shadow: 2px 2px 5px rgba(255, 193, 7, 0.5);
 }
@@ -75,4 +76,30 @@ button:hover {
     background: #FC913A;
     transform: scale(1.05);
     box-shadow: 0px 4px 15px rgba(255, 78, 80, 0.5);
+}
+
+/* 🎯 Radio Button Styling */
+input[type="radio"] {
+    display: none;
+}
+
+label {
+    display: block;
+    font-family: 'Roboto', sans-serif;
+    background: #333;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+label:hover {
+    background: #444;
+}
+
+input[type="radio"]:checked + label {
+    background: #FFC107;
+    color: #222;
+    font-weight: bold;
 }
